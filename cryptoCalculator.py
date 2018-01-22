@@ -1,11 +1,13 @@
 "Calculator of Stock and Cryptocurrency"
-print()
-current_price_eth = float(input("Current price of ethereum: "))
 
+import sys
 class cryptocurrency:
 	def __init__(self,amount_spent, price_at_purchase):
 		self.amount_spent = amount_spent
-		self.amount_after_fees = amount_spent - 2.99
+		if (amount_spent <= 200):	
+			self.amount_after_fees = amount_spent - 2.99
+		else:
+			self.amount_after_fees = amount_spent - (amount_spent * 0.0149)
 		self.price_at_purchase = price_at_purchase
 		self.weighted_gain = 0
 		self.value_gain = 0
@@ -20,13 +22,32 @@ class sptl(stock):
 class sphd(stock):
 	type = 'ETF'
 """
-class eth(cryptocurrency):
-	type = 'Ethereum'
-class btc(cryptocurrency):
-	type = 'Bitcoin'
+class Ethereum(cryptocurrency):
+	type = 'eth'
+class Bitcoin(cryptocurrency):
+	type = 'btc'
+types_of_crypto = {
+	'eth' : Ethereum,
+	'btc' : Bitcoin
+}
 
-purchases = [eth(150.35,1229.10),eth(150.00, 1145.41),eth(150.00,1049.44)]
+print()
+current_price_eth = float(input("Current price of ethereum: "))
+infile = open(sys.argv[1],"r")
+#Reading in info from the file
+line_info = []
+for line in infile:
+	line_info.append(line[:-1].split(" "))
+	print(line_info)
 
+#Storing info into classes
+purchases = []
+
+for line in line_info:
+	type_of_crypto = line[0]
+	amount_spent = float(line[1])
+	price_at_purchase = float(line[2])
+	purchases.append(types_of_crypto[type_of_crypto](amount_spent, price_at_purchase))
 num_purchases = len(purchases)
 total_value_gain = 0
 total_spent = 0
