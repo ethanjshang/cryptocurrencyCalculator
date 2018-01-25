@@ -1,3 +1,8 @@
+"""
+TODO:
+Clarify distinction between amount_spent and amount_after fees
+Add test cases to make sure this program is working correctly
+"""
 "Calculator of Stock and Cryptocurrency"
 
 import sys
@@ -12,19 +17,19 @@ class cryptocurrency:
 		self.weighted_gain = 0
 		self.value_gain = 0
 """
-class stock:
+class Stock:
 	def __init__(self, amount_spent, price_at_purchase,fees):
 		self.amount_spent = amount_spent
-		self amount_after_fees = amount_spent - 4.99
+		self.amount_after_fees = amount_spent - 4.99
+	def update_amount(self,new_amount):
+		self.amount_spent = new_amount
+class ETF(Stock):
+	type = ''
 
-class sptl(stock):
-	type = 'ETF'
-class sphd(stock):
-	type = 'ETF'
 """
-class Ethereum(cryptocurrency):
+class Ethereum(Cryptocurrency):
 	type = 'eth'
-class Bitcoin(cryptocurrency):
+class Bitcoin(Cryptocurrency):
 	type = 'btc'
 types_of_crypto = {
 	'eth' : Ethereum,
@@ -64,3 +69,4 @@ print("\nCost Basis  :", total_spent)
 print("Market Value:", round(total_value_gain + total_spent,2))
 print("Total Absolute Change in investment value (including fees):", round(total_value_gain,2))
 print("Total Relative Change in investment value (including fees):", round((total_value_gain+total_spent)/total_spent,4))
+
