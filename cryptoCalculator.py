@@ -7,6 +7,7 @@ import sys
 print()
 current_price_eth = float(input("Current price of ethereum: "))
 current_price_bitcoin = float(input("Current price of bitcoin: "))
+current_price_litecoin = float(input("Current price of litecoin: "))
 infile = open(sys.argv[1],"r")
 
 class cryptocurrency:
@@ -25,9 +26,13 @@ class Ethereum(cryptocurrency):
 class Bitcoin(cryptocurrency):
 	type = 'btc'
 	price = current_price_bitcoin
+class Litecoin(cryptocurrency):
+	type = 'ltc'
+	price = current_price_litecoin
 types_of_crypto = {
 	'eth' : Ethereum,
-	'btc' : Bitcoin
+	'btc' : Bitcoin,
+	'ltc' : Litecoin
 }
 
 
