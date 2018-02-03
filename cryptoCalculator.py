@@ -1,9 +1,5 @@
-"""
-TODO:
-Add Litecoin and bitcoin
-"""
 import sys
-"Calculator of Stock and Cryptocurrency"
+#Calculator of Stock and Cryptocurrency
 print()
 current_price_eth = float(input("Current price of ethereum: "))
 current_price_bitcoin = float(input("Current price of bitcoin: "))
@@ -56,7 +52,7 @@ total_spent = 0
 total_spent_after_fees = 0
 
 print()
-
+#Calculating the effect of each purchase
 for purchase in purchases:
 	total_spent += purchase.amount_spent
 	total_spent_after_fees += purchase.amount_after_fees
@@ -64,10 +60,13 @@ for purchase in purchases:
 	purchase.value_gain = purchase.weighted_gain - purchase.amount_after_fees
 	total_value_gain += purchase.value_gain
 	print("Change in investment value due to $" + str(purchase.amount_spent), "of", purchase.type, "bought at", purchase.price_at_purchase, ":", round(purchase.value_gain,2))
+
+#Calculating more information
 market_value = total_value_gain + total_spent_after_fees
 sell_price = round(market_value - (market_value * 0.0149),2)
 overall_change = round(market_value - (market_value * 0.0149)-total_spent,2)
 print()
+#Displaying information
 print("Total Spent Before Fees:", total_spent)
 print(" Total Spent After Fees:", total_spent_after_fees)
 print("     Total Value Change:", round(total_value_gain,2))
@@ -78,3 +77,4 @@ print("Total Relative Change in investment value (after fees):", round(market_va
 
 print("\nAmount Gained if Sold (including sell fee):", sell_price)
 print("                            Overall Change:", overall_change)
+
