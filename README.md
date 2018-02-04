@@ -1,2 +1,2 @@
 # cryptocurrencyCalculator
-A calculator that reads from a text file to calculate changes in investment value.
+A script that processes data from a text file to calculate and display comprehensive changes in investment value.
