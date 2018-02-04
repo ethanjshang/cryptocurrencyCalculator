@@ -18,13 +18,19 @@ class cryptocurrency:
 		self.value_gain = 0
 class Ethereum(cryptocurrency):
 	type = 'eth'
+	name = 'Ethereum'
 	price = current_price_eth
+	amount_gained = 0
 class Bitcoin(cryptocurrency):
 	type = 'btc'
+	name = 'Bitcoin'
 	price = current_price_bitcoin
+	amount_gained = 0
 class Litecoin(cryptocurrency):
 	type = 'ltc'
+	name = 'Litecoin'
 	price = current_price_litecoin
+	amount_gained = 0
 types_of_crypto = {
 	'eth' : Ethereum,
 	'btc' : Bitcoin,
@@ -36,7 +42,6 @@ types_of_crypto = {
 line_info = []
 for line in infile:
 	line_info.append(line[:-1].split(" "))
-	print(line_info)
 
 #Storing info into classes
 purchases = []
@@ -58,15 +63,21 @@ for purchase in purchases:
 	total_spent_after_fees += purchase.amount_after_fees
 	purchase.weighted_gain = purchase.price / purchase.price_at_purchase  * purchase.amount_after_fees
 	purchase.value_gain = purchase.weighted_gain - purchase.amount_after_fees
+	#purchase.amount_gained += purchase.value_gain
+	types_of_crypto[purchase.type].amount_gained += purchase.value_gain
 	total_value_gain += purchase.value_gain
 	print("Change in investment value due to $" + str(purchase.amount_spent), "of", purchase.type, "bought at", purchase.price_at_purchase, ":", round(purchase.value_gain,2))
-
 #Calculating more information
 market_value = total_value_gain + total_spent_after_fees
 sell_price = round(market_value - (market_value * 0.0149),2)
 overall_change = round(market_value - (market_value * 0.0149)-total_spent,2)
 print()
 #Displaying information
+
+print("Amount Gained Per Cryptocurrency:")
+for key, value in types_of_crypto.items():
+	print(value.name,round(value.amount_gained,2))
+
 print("Total Spent Before Fees:", total_spent)
 print(" Total Spent After Fees:", total_spent_after_fees)
 print("     Total Value Change:", round(total_value_gain,2))
