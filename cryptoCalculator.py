@@ -12,7 +12,7 @@ class cryptocurrency:
 		if (amount_spent <= 200):	
 			self.amount_after_fees = amount_spent - 2.99
 		else:
-			self.amount_after_fees = amount_spent - (amount_spent * 0.0149)
+			self.amount_after_fees = amount_spent - (amount_spent * 0.01468)
 		self.price_at_purchase = price_at_purchase
 		self.weighted_gain = 0
 		self.value_gain = 0
@@ -71,7 +71,7 @@ for purchase in purchases:
 market_value = total_value_gain + total_spent_after_fees
 sell_price = round(market_value - (market_value * 0.0149),2)
 overall_change = round(market_value - (market_value * 0.0149)-total_spent,2)
-print()
+print('\n')
 #Displaying information
 
 print("Amount Gained Per Cryptocurrency:")
