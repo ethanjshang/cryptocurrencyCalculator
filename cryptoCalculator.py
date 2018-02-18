@@ -1,5 +1,5 @@
 import sys
-#Calculator of Stock and Cryptocurrency
+#Calculator of Cryptocurrency Value Change
 print()
 #Getting current price of cryptocurrency from user input.
 current_price_eth = float(input("Current price of ethereum: "))
@@ -71,7 +71,7 @@ for purchase in purchases:
 	types_of_crypto[purchase.type].amount_gained += purchase.value_gain
 	total_value_gain += purchase.value_gain
 	print("Change in investment value due to $" + str(purchase.amount_spent), "of", purchase.type, "bought at", purchase.price_at_purchase, ":", round(purchase.value_gain,2))
-#Calculating more information
+#Calculating more comprehensive information
 market_value = total_value_gain + total_spent_after_fees
 sell_price = round(market_value - (market_value * 0.0149),2)
 overall_change = round(market_value - (market_value * 0.0149)-total_spent,2)
