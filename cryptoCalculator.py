@@ -1,12 +1,15 @@
 import sys
 #Calculator of Stock and Cryptocurrency
 print()
+#Getting current price of cryptocurrency from user input.
 current_price_eth = float(input("Current price of ethereum: "))
 current_price_bitcoin = float(input("Current price of bitcoin: "))
 current_price_litecoin = float(input("Current price of litecoin: "))
 infile = open(sys.argv[1],"r")
 
+
 class cryptocurrency:
+	#Calculates initital fees
 	def __init__(self,amount_spent, price_at_purchase):
 		self.amount_spent = amount_spent
 		if (amount_spent <= 200):	
@@ -16,6 +19,8 @@ class cryptocurrency:
 		self.price_at_purchase = price_at_purchase
 		self.weighted_gain = 0
 		self.value_gain = 0
+		
+#Defining types of cryptocurrency
 class Ethereum(cryptocurrency):
 	type = 'eth'
 	name = 'Ethereum'
@@ -45,7 +50,6 @@ for line in infile:
 
 #Storing info into classes
 purchases = []
-
 for line in line_info:
 	type_of_crypto = line[0]
 	amount_spent = float(line[1])
