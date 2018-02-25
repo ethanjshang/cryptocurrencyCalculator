@@ -1,4 +1,5 @@
 import sys
+#TODO Write information to text file?
 #Calculator of Cryptocurrency Value Change
 print()
 #Getting current price of cryptocurrency from user input.
