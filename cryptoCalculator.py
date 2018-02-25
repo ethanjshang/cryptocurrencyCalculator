@@ -21,6 +21,7 @@ class cryptocurrency:
 		self.value_gain = 0
 		
 #Defining types of cryptocurrency
+#TODO possibly remove redundancies in each class?
 class Ethereum(cryptocurrency):
 	type = 'eth'
 	name = 'Ethereum'
@@ -54,7 +55,7 @@ for line in line_info:
 	type_of_crypto = line[0]
 	amount_spent = float(line[1])
 	price_at_purchase = float(line[2])
-	purchases.append(types_of_crypto[type_of_crypto](amount_spent, price_at_purchase))
+	purchases.append(types_of_crypto[type_of_crypto](amount_spent, price_at_purchase)) //Accessed dictionary and instantiates class
 num_purchases = len(purchases)
 total_value_gain = 0
 total_spent = 0
